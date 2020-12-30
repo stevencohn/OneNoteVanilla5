@@ -3,3 +3,71 @@ Demo a vanilla OneNote add-in sing .NET 5.0 (placeholder)
 
 TBD: Doesn't work yet... still trying to figure out if .NET 5.0 will support COM registration
 or come up with an alternate approach...
+
+https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/COM-activation.md
+    .NET Framework used mscoree.dll as a shim to bootrap COM activation
+    .NET Core will use comhost.dll - but is it available yet????
+
+
+# How-to
+
+## Setup
+
+Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
+
+### Create Project
+
+1. Visual Studio -> Create a new project
+
+2. C#/Windows/Library -> Choose Class Library
+
+3. Enter names
+
+4. Target Framework -> .NET 5.0
+
+5. Edit the csproj file:
+
+   Change the TargetFramework to net5.0-windows
+
+     <TargetFramework>net5.0-windows</TargetFramework>
+
+   Add the UseWindowsForms element
+
+     <UseWindowsForm>true</UseWindowsForms>
+
+
+### Add Dependencies
+
+6. Add COM reference Microsoft.Office 16.0 Object Library
+   This adds Interop.Microsoft.Office.Core
+
+7. Add COM reference Microsoft OneNote 15.0 Type Library
+   This adds Interop.Microsoft.Office.Interop.OneNote
+
+8. Browse to reference <VSpath>\Common7\IDE\PublicAssemblies\extensibility.dll
+   This adds Extensiblity
+
+
+### Create AddIn class
+
+9. Create a new class (or rename the default Class1.cs) for the addin
+   The name can be anything you want
+
+10. Add these using statements
+
+    using Microsoft.Office.Core;
+    using Microsoft.Office.Interop.OneNote;
+
+11. Add the following attributes to the addin class
+
+    [ComVisible(true)]
+    [Guid("4D86B2FD-0C2D-4610-8916-DE24C4BB70B5")]
+    [ProgId("OneNoteVanilla5")]
+
+    replacing the Guid with your own unique Guid
+    replacing the ProgId with a unique ID; this will be recorded in the System Registry
+
+12. Extend the class with these interfaces:
+
+    : IDTExtensibility2     // adds lifetime handlers to the addin
+    : IRibbonExtensibility  // adds ribbon handlers to the addin
