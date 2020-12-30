@@ -1,0 +1,64 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\AppID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}]
+"DllSurrogate"=""
+
+[HKEY_CLASSES_ROOT\OneNoteVanilla5]
+@="OneNoteVanilla5.AddIn"
+
+[HKEY_CLASSES_ROOT\OneNoteVanilla5\CLSID]
+@="{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}"
+
+[HKEY_CLASSES_ROOT\OneNoteVanilla5\CurVer]
+@="OneNoteVanilla5.1"
+
+[HKEY_CLASSES_ROOT\OneNoteVanilla5.1]
+@="Addin class"
+
+[HKEY_CLASSES_ROOT\OneNoteVanilla5.1\CLSID]
+@="{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}]
+@="OneNoteVanilla5.AddIn"
+"AppID"="{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\Implemented Categories]
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\InprocServer32]
+@="comhost.dll"
+"ThreadingModel"="Both"
+"CodeBase"="C:\\Github\\OneNoteVanilla5\\bin\\Debug\\net5.0-windows\\OneNoteVanilla5.dll"
+"RuntimeVersion"="v5.0"
+"Class"="OneNoteVanilla5.AddIn"
+"Assembly"="OneNoteVanilla5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\InprocServer32\1.0.0.0]
+"CodeBase"="C:\\Github\\OneNoteVanilla5\\bin\\Debug\\net5.0-windows\\OneNoteVanilla5.dll"
+"Assembly"="OneNoteVanilla5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v5.0"
+"Class"="OneNoteVanilla5.AddIn"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\ProgID]
+@="OneNoteVanilla5"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\Programmable]
+@=""
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\TypeLib]
+@="{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}"
+
+[HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\VersionIndependentProgID]
+@="OneNoteVanilla5"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\AppID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}]
+"DllSurrogate"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\OneNote\AddIns\OneNoteVanilla5]
+"LoadBehavior"=dword:00000003
+"Description"="Extension for OneNote"
+"FriendlyName"="OneNoteVanilla5 Demo"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OneNoteVanilla5.dll]
+"Path"="C:\\Github\\OneNoteVanilla5\\bin\\Debug\\net5.0-windows\\OneNoteVanilla5.dll"
