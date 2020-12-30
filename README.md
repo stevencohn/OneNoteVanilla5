@@ -5,8 +5,9 @@ TBD: Doesn't work yet... still trying to figure out if .NET 5.0 will support COM
 or come up with an alternate approach...
 
 https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/COM-activation.md
-    .NET Framework used mscoree.dll as a shim to bootrap COM activation
-    .NET Core will use comhost.dll - but is it available yet????
+
+* .NET Framework used mscoree.dll as a shim to bootrap COM activation
+* .NET Core will use comhost.dll - but is it available yet????
 
 
 # How-to
