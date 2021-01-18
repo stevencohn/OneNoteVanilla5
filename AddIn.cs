@@ -31,7 +31,8 @@ namespace OneNoteVanilla5
 
 		public void OnDisconnection(ext_DisconnectMode RemoveMode, ref Array custom)
 		{
-			// required to shut down OneNote
+			// required to shut down OneNote and release .NET
+			// both of these lines are necessary along with the two lines in OnBeginShutdown
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
 		}
@@ -49,6 +50,7 @@ namespace OneNoteVanilla5
 		public void OnBeginShutdown(ref Array custom)
 		{
 			// required to shut down OneNote
+			// both of these lines are necessary along with the two lines in OnDisconnection
 			onenote = null;
 			System.Windows.Forms.Application.Exit();
 		}
@@ -64,7 +66,7 @@ namespace OneNoteVanilla5
     <tabs>
       <tab idMso=""TabHome"">
         <group id=""vanillaAddInGroup"" label=""Vanilla Add-in"">
-          <button id=""helloButton"" imageMso=""HappyFace"" label=""Say Hello!"" onAction=""SayHello""/>
+          <button id=""helloButton"" imageMso=""HappyFace"" size=""large"" label=""Say Hello!"" onAction=""SayHello""/>
         </group>
       </tab>
     </tabs>
@@ -87,7 +89,13 @@ namespace OneNoteVanilla5
 			//var ns = root.GetNamespaceOfPrefix("one");
 
 			var name = root.Attribute("name").Value;
-			MessageBox.Show($"Hello from {name}!");
+
+			MessageBox.Show(
+				$"Hello from {name}!",
+				"Vanilla OneNote on .NET 5",
+				MessageBoxButtons.OK, MessageBoxIcon.None,
+				MessageBoxDefaultButton.Button1,
+				MessageBoxOptions.DefaultDesktopOnly);
 		}
 	}
 }
