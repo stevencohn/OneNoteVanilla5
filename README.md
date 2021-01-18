@@ -28,11 +28,12 @@ Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
 
 5. Edit the csproj file:
 
-   Change the TargetFramework to net5.0-windows
+   Change the TargetFramework to net5.0-windows and enable COM hosting
 
      <TargetFramework>net5.0-windows</TargetFramework>
+     <EnableComHosting>true</EnableComHosting>
 
-   Add the UseWindowsForms element
+   To use Windows Forms, add the UseWindowsForms element
 
      <UseWindowsForm>true</UseWindowsForms>
 
@@ -42,8 +43,14 @@ Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
 6. Add COM reference Microsoft.Office 16.0 Object Library
    This adds Interop.Microsoft.Office.Core
 
+   a. Note that some people have found it necessary to enable _Embed Interop Type_ in the
+      dependency proeprties but it seems to work without it.
+
 7. Add COM reference Microsoft OneNote 15.0 Type Library
    This adds Interop.Microsoft.Office.Interop.OneNote
+
+   a. Note that some people have found it necessary to enable _Embed Interop Type_ in the
+      dependency proeprties but it seems to work without it.
 
 8. Browse to reference <VSpath>\Common7\IDE\PublicAssemblies\extensibility.dll
    This adds Extensiblity

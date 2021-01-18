@@ -4,6 +4,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>OneNoteVanilla5</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <EnableComHosting>true</EnableComHosting>
     <Authors>Steven Cohn</Authors>
     <Product>OneNoteVanilla5</Product>
     <Description>Demo a vanilla OneNote add-in using .NET 5.0</Description>
@@ -17,6 +18,7 @@
       <Guid>2df8d04c-5bfa-101b-bde5-00aa0044de52</Guid>
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="Microsoft.Office.OneNote.dll">
       <WrapperTool>tlbimp</WrapperTool>
@@ -25,6 +27,7 @@
       <Guid>0ea692ee-bb50-4e3c-aef0-356d91732725</Guid>
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
 

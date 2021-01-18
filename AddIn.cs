@@ -5,13 +5,12 @@
 namespace OneNoteVanilla5
 {
 	using Extensibility;
-	using System;
-	using System.Runtime.InteropServices;
 	using Microsoft.Office.Core;
 	using Microsoft.Office.Interop.OneNote;
+	using System;
+	using System.Runtime.InteropServices;
 	using System.Windows.Forms;
 	using System.Xml.Linq;
-	using System.Linq;
 
 
 	[ComVisible(true)]
@@ -19,21 +18,27 @@ namespace OneNoteVanilla5
 	[ProgId("OneNoteVanilla5")] // change this!
 	public class AddIn : IDTExtensibility2, IRibbonExtensibility
 	{
+		private Microsoft.Office.Interop.OneNote.Application onenote;
+
 
 		// IDTExtensibility2...
 
 		public void OnConnection(
 			object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)
 		{
+			onenote = (Microsoft.Office.Interop.OneNote.Application)Application;
 		}
 
 		public void OnDisconnection(ext_DisconnectMode RemoveMode, ref Array custom)
 		{
-			// dispose your stuff here
+			// required to shut down OneNote
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
 		}
 
 		public void OnAddInsUpdate(ref Array custom)
 		{
+			//
 		}
 
 		public void OnStartupComplete(ref Array custom)
@@ -43,7 +48,9 @@ namespace OneNoteVanilla5
 
 		public void OnBeginShutdown(ref Array custom)
 		{
-			// cleanup your stuff here
+			// required to shut down OneNote
+			onenote = null;
+			System.Windows.Forms.Application.Exit();
 		}
 
 
@@ -51,13 +58,13 @@ namespace OneNoteVanilla5
 
 		public string GetCustomUI(string RibbonID)
 		{
-			return @"<?xml version=""1.0"" encoding=""utf -8"" ?>
+			return @"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <customUI xmlns=""http://schemas.microsoft.com/office/2009/07/customui"">
   <ribbon>
     <tabs>
       <tab idMso=""TabHome"">
         <group id=""vanillaAddInGroup"" label=""Vanilla Add-in"">
-          <button id=""helloButton"" imageMso=""HappyFace"" getLabel=""Say Hello!"" onAction=""SayHello""/>
+          <button id=""helloButton"" imageMso=""HappyFace"" label=""Say Hello!"" onAction=""SayHello""/>
         </group>
       </tab>
     </tabs>
@@ -70,8 +77,6 @@ namespace OneNoteVanilla5
 
 		public void SayHello(IRibbonControl control)
 		{
-			var onenote = new ApplicationClass();
-
 			onenote.GetHierarchy(
 				onenote.Windows.CurrentWindow.CurrentNotebookId,
 				HierarchyScope.hsSelf,
@@ -79,18 +84,10 @@ namespace OneNoteVanilla5
 				XMLSchema.xs2013);
 
 			var root = XElement.Parse(xml);
-			var ns = root.GetNamespaceOfPrefix("one");
+			//var ns = root.GetNamespaceOfPrefix("one");
 
-			var notebook = root.Elements(ns + "Notebook").FirstOrDefault();
-			if (notebook != null)
-			{
-				var name = notebook.Attribute("name").Value;
-				MessageBox.Show($"Hello from {name}!");
-			}
-			else
-			{
-				MessageBox.Show($"Error finding notebook name, but Hi anyway!");
-			}
+			var name = root.Attribute("name").Value;
+			MessageBox.Show($"Hello from {name}!");
 		}
 	}
 }

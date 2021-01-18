@@ -27,7 +27,7 @@
 [HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
 
 [HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{4D86B2FD-0C2D-4610-8916-DE24C4BB70B5}\InprocServer32]
-@="comhost.dll"
+@="C:\Github\OneNoteVanilla5\bin\Debug\net5.0-windows\OneNoteVanilla5.comhost.dll"
 "ThreadingModel"="Both"
 "CodeBase"="C:\\Github\\OneNoteVanilla5\\bin\\Debug\\net5.0-windows\\OneNoteVanilla5.dll"
 "RuntimeVersion"="v5.0"
