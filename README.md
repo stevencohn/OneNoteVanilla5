@@ -1,5 +1,5 @@
 # OneNoteVanilla5
-Demo a vanilla OneNote add-in sing .NET 5.0
+Demo a vanilla OneNote add-in using .NET 5.0
 
 https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/COM-activation.md
 
