@@ -74,5 +74,7 @@ Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
 
 12. Extend the class with these interfaces:
 
+    ```csharp
     : IDTExtensibility2     // adds lifetime handlers to the addin
     : IRibbonExtensibility  // adds ribbon handlers to the addin
+    ```
