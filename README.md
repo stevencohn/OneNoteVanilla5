@@ -27,8 +27,10 @@ Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
 
    Change the TargetFramework to net5.0-windows and enable COM hosting
 
+     ```xml
      <TargetFramework>net5.0-windows</TargetFramework>
      <EnableComHosting>true</EnableComHosting>
+     ```
 
    To use Windows Forms, add the UseWindowsForms element
 
@@ -37,39 +39,43 @@ Requirements: Visual Studio 16.8 or higher, .NET 5.0 SDK
 
 ### Add Dependencies
 
-6. Add COM reference Microsoft.Office 16.0 Object Library
+6. Add COM reference Microsoft.Office 16.0 Object Library  
    This adds Interop.Microsoft.Office.Core
 
    a. Note that some people have found it necessary to enable _Embed Interop Type_ in the
       dependency proeprties but it seems to work without it.
 
-7. Add COM reference Microsoft OneNote 15.0 Type Library
+7. Add COM reference Microsoft OneNote 15.0 Type Library  
    This adds Interop.Microsoft.Office.Interop.OneNote
 
    a. Note that some people have found it necessary to enable _Embed Interop Type_ in the
       dependency proeprties but it seems to work without it.
 
-8. Browse to reference <VSpath>\Common7\IDE\PublicAssemblies\extensibility.dll
+8. Browse to reference <VSpath>\Common7\IDE\PublicAssemblies\extensibility.dll  
    This adds Extensiblity
 
 
 ### Create AddIn class
 
-9. Create a new class (or rename the default Class1.cs) for the addin
+9. Create a new class (or rename the default Class1.cs) for the addin  
    The name can be anything you want
 
 10. Add these using statements
 
+    ```csharp
     using Microsoft.Office.Core;
     using Microsoft.Office.Interop.OneNote;
+    ```
 
 11. Add the following attributes to the addin class
 
+    ```csharp
     [ComVisible(true)]
     [Guid("4D86B2FD-0C2D-4610-8916-DE24C4BB70B5")]
     [ProgId("OneNoteVanilla5")]
+    ```
 
-    replacing the Guid with your own unique Guid
+    replacing the Guid with your own unique Guid  
     replacing the ProgId with a unique ID; this will be recorded in the System Registry
 
 12. Extend the class with these interfaces:
